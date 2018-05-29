@@ -8,7 +8,7 @@ express()
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .get('/', (req, res) => {
-    ogParser("http://www.bbc.com/news/world-europe-44289404", (error, data)=>{
+    ogParser(req.query.url || 'https://www.letananarivien.com', (error, data)=>{
       res.json(data)
     })
   })
