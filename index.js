@@ -19,7 +19,7 @@ express()
         data.favicon = `http://www.google.com/s2/favicons?domain=${data.og?data.og.site_name:res.query.url}`
         data.title = data.title
         data.description = data.og ? data.og.description : (data.twitter ? data.twitter.description : (data.meta ? data.meta.description : ''))
-        data.img = data.og ? data.og.image.url : (data.twitter ? data.twitter.image : '')
+        data.img = (data.og && data.og.image) ? data.og.image.url : (data.twitter ? data.twitter.image : '')
         data.url = data.og ? data.og.url : (data.twitter ? data.twitter.url : (data.meta ? data.meta.url : ''))
       res.json(data)
     })
